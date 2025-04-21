@@ -99,7 +99,7 @@ input, select, textarea {
 	}
 
 	body {
-		background-image: url("../../Cole\ Odyssey\ bg.png");
+		background-image: url("../images/bg.webp");
 		background-size: auto 100%,
  cover;
 		background-attachment: fixed,
