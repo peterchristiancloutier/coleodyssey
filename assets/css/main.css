@@ -4154,3 +4154,24 @@ input, select, textarea {
 		}
 
 	}
+/* Go to Today Floating Button */
+.go-to-today {
+	position: fixed;
+	bottom: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #1fdbbf;
+	color: white;
+	padding: 12px 20px;
+	border-radius: 30px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	z-index: 1000;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+	transition: background 0.3s ease;
+  }
+  
+  .go-to-today:hover {
+	background-color: #25f07a;
+  }
