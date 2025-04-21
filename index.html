@@ -5,6 +5,33 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
+	<!-- Floating Go to Today Button -->
+	<a id="goToTodayBtn" href="#" class="go-to-today">Today</a>
+	<script>
+	document.getElementById("goToTodayBtn").addEventListener("click", function(event) {
+	  event.preventDefault();
+	
+	  const today = new Date();
+	  const startDate = new Date("2025-04-19");
+	  const dayDiff = Math.floor((today - startDate) / (1000 * 60 * 60 * 24)) + 1;
+	
+	  const dayNumber = Math.min(Math.max(dayDiff, 1), 11);
+	  const sectionId = `day-${dayNumber}`;
+	  const target = document.getElementById(sectionId);
+	
+	  if (target) {
+		const offset = 100; // adjust this number to increase/decrease spacing
+		const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+	
+		window.scrollTo({
+		  top: targetPosition,
+		  behavior: "smooth"
+		});
+	  } else {
+		alert("Could not find today's section.");
+	  }
+	});
+	</script>
 	<head>
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
 		<title>Cole Odyssey</title>
@@ -16,6 +43,9 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
+	<!-- Floating Go to Today Button -->
+		<a id="goToTodayBtn" href="#" class="go-to-today">Today!</a>
+	
 	<body class="is-preload">
 
 		<!-- Page Wrapper -->
