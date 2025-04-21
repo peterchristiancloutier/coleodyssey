@@ -100,13 +100,11 @@ input, select, textarea {
 
 	body {
 		background-image: url("../images/bg.webp");
-		background-size: auto 100%,
- cover;
-		background-attachment: fixed,
- fixed;
-		background-position: center,
- center;
-	}
+		background-size: cover; /* Responsive, fills screen while maintaining aspect ratio */
+		background-attachment: fixed;
+		background-position: center top; /* anchors to the top */
+		background-repeat: no-repeat;
+	  }
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
 			-moz-animation: none !important;
