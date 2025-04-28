@@ -4197,47 +4197,68 @@ input, select, textarea {
 .countdown-container {
     display: flex;
     justify-content: center;
-    gap: 1.5em;
-    margin-top: 1.5em;
-    font-family: 'Source Sans Pro', sans-serif;
+    gap: 0.5em;
+    margin: 1em 0;
+    flex-wrap: nowrap;
 }
 
 .countdown-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5em;
+    border-radius: 5px;
+    min-width: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 1em;
-    border-radius: 0.5em;
-    min-width: 80px;
 }
 
 .countdown-item span:first-child {
-    font-size: 2.5em;
-    font-weight: 700;
-    color: #ffffff;
-    line-height: 1;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
 }
 
 .countdown-label {
-    font-size: 0.9em;
-    text-transform: uppercase;
+    font-size: 0.8em;
     color: rgba(255, 255, 255, 0.8);
-    margin-top: 0.5em;
+    text-transform: uppercase;
 }
 
 @media screen and (max-width: 736px) {
     .countdown-container {
-        flex-wrap: wrap;
-        gap: 1em;
+        gap: 0.25em;
+        margin: 0.5em 0;
     }
     
     .countdown-item {
-        min-width: 70px;
-        padding: 0.75em;
+        padding: 0.25em;
+        min-width: 45px;
     }
     
     .countdown-item span:first-child {
-        font-size: 2em;
+        font-size: 1.2em;
+    }
+    
+    .countdown-label {
+        font-size: 0.7em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .countdown-container {
+        gap: 0.2em;
+    }
+    
+    .countdown-item {
+        min-width: 40px;
+        padding: 0.2em;
+    }
+    
+    .countdown-item span:first-child {
+        font-size: 1em;
+    }
+    
+    .countdown-label {
+        font-size: 0.6em;
     }
 }
