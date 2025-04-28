@@ -99,7 +99,7 @@ input, select, textarea {
 	}
 
 	body {
-		background-image: url("../images/bg.webp");
+		background-image: url("../../images/cobg.webp");
 		background-size: cover; /* Responsive, fills screen while maintaining aspect ratio */
 		background-attachment: fixed;
 		background-position: center top; /* anchors to the top */
