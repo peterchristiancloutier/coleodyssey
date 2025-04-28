@@ -60,6 +60,45 @@
 			alert("Could not find today's section.");
 		}
 	});
+
+	// Add the same functionality to the TODAY menu link
+	document.getElementById("today-link").addEventListener("click", function(event) {
+		event.preventDefault();
+	
+		const today = new Date();
+		const startDate = new Date("2025-07-30");
+		const endDate = new Date("2025-08-10");
+		
+		if (today > endDate) {
+			alert("The trip has ended!");
+			return;
+		}
+		
+		if (today < startDate) {
+			window.scrollTo({
+				top: 0,
+				behavior: "smooth"
+			});
+			return;
+		}
+		
+		const dayDiff = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+		const dayNumber = Math.min(Math.max(dayDiff, 1), 11);
+		const sectionId = `day-${dayNumber}`;
+		const target = document.getElementById(sectionId);
+	
+		if (target) {
+			const offset = 100;
+			const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+	
+			window.scrollTo({
+				top: targetPosition,
+				behavior: "smooth"
+			});
+		} else {
+			alert("Could not find today's section.");
+		}
+	});
 	</script>
 	<body class="is-preload">
 
@@ -79,11 +118,9 @@
 						<div class="inner">
 							<h2>Menu</h2>
 							<ul class="links">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="generic.html">Generic</a></li>
-								<li><a href="elements.html">Elements</a></li>
-								<li><a href="#">Log In</a></li>
-								<li><a href="#">Sign Up</a></li>
+								<li><a href="#" id="today-link">TODAY</a></li>
+								<li><a href="#four">DORENE</a></li>
+								<li><a href="#footer">MAP</a></li>
 							</ul>
 							<a href="#" class="close">Close</a>
 						</div>
@@ -248,26 +285,30 @@
 							<section id="four" class="wrapper alt style1">
 								<div class="inner">
 									<h2 class="major">Mediterranean Memories</h2>
-									<section class="features">
-										<article>
+									<section class="features" style="display: flex; justify-content: center;">
+										<article style="max-width: 600px;">
 											<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
 											<h3 class="major">Happy Birthday, Dorene!</h3>
 											<p>Happy 65th birthday to an extraordinary woman who fills our lives with love, wisdom, and warmth—your strength and grace inspire us every day. We're so lucky to call you both Mom and Mother-in-law!</p>
-											<a href="#" class="special">More</a>
+											<a href="#" class="special" id="birthday-more">More</a>
 										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
-											<h3 class="major">Nisl placerat</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="#" class="special">Learn more</a>
 									</section>
-									<ul class="actions">
-										<li><a href="#" class="button">Browse All</a></li>
-									</ul>
 								</div>
 							</section>
 
 					</section>
+
+				<!-- Birthday Modal -->
+				<div id="birthday-modal" class="modal">
+					<div class="modal-content">
+						<span class="close-modal">&times;</span>
+						<h2>Happy Birthday, Dorene!</h2>
+						<div class="modal-image">
+							<img src="images/pic04.jpg" alt="Dorene" />
+						</div>
+						<p>Happy 65th birthday to an extraordinary woman who fills our lives with love, wisdom, and warmth—your strength and grace inspire us every day. We're so lucky to call you both Mom and Mother-in-law!</p>
+					</div>
+				</div>
 
 				<!-- Footer -->
 					<section id="footer">
@@ -287,6 +328,29 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				// Modal functionality
+				const modal = document.getElementById('birthday-modal');
+				const btn = document.getElementById('birthday-more');
+				const span = document.getElementsByClassName('close-modal')[0];
+
+				btn.onclick = function() {
+					modal.style.display = 'block';
+					document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+				}
+
+				span.onclick = function() {
+					modal.style.display = 'none';
+					document.body.style.overflow = 'auto'; // Re-enable scrolling
+				}
+
+				window.onclick = function(event) {
+					if (event.target == modal) {
+						modal.style.display = 'none';
+						document.body.style.overflow = 'auto';
+					}
+				}
+			</script>
 
 	</body>
 </html>
